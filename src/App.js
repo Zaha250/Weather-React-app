@@ -17,17 +17,16 @@ const App = () => {
   }
 
   const updateWeather = (e) => {
-    if (e.key === 'Enter') {
-      setLoad(true);
+    e.preventDefault();
+    setLoad(true);
 
-      fetch(`${api.base}weather?q=${query}&appid=${api.key}`)
-        .then(res => res.json())
-        .then(data => {
-          setWeather(data);
-          setQuery('');
-          setLoad(false);
-        })
-    }
+    fetch(`${api.base}weather?q=${query}&appid=${api.key}`)
+      .then(res => res.json())
+      .then(data => {
+        setWeather(data);
+        setQuery('');
+        setLoad(false);
+      })
   }
 
   const handleChange = (e) => {
